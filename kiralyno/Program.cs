@@ -11,7 +11,11 @@ namespace kiralyno
         private char[,] t;
         private char urescella;
         private int uresoszlopok;
+
+
+
         private int uresoszsorok;
+        
         public tabla(char a)
         {
             t = new char[8, 8];
@@ -53,9 +57,22 @@ namespace kiralyno
                 Console.WriteLine("\n\n");
             }
         }
-        public int uresoszlop()
+        public bool uresoszlop(int uresoszlopok)
         {
-            return 0;
+            
+            int i = 0;
+            while (i < 8 && t[i,uresoszlopok]!='K' )
+            {
+                i++;
+            }
+            if (i<8)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
         public int uressor()
         {
@@ -68,8 +85,18 @@ namespace kiralyno
         static void Main(string[] args)
         {
             tabla asd = new tabla('#');
-            asd.elhelyez(64);
+            asd.elhelyez(8);
             asd.megjelenit();
+            Console.WriteLine("Kérem az oszlopot: ");
+            int a = int.Parse(Console.ReadLine())-1;
+            if (asd.uresoszlop(a))
+            {
+                Console.WriteLine("Üresoszlop");
+            }
+            else
+            {
+                Console.WriteLine("Nem üres oszlop");
+            }
             Console.ReadKey();
         }
     }
