@@ -27,12 +27,10 @@ namespace kiralyno
         public void elhelyez(int n)
         {
             Random rnd = new Random();
-            int a=new int();
-            int b = new int();
             while (n!=0)
             {
-                a = rnd.Next(0, 8);
-                b = rnd.Next(0, 8);
+                int a = rnd.Next(0, 8);
+                int b = rnd.Next(0, 8);
                 if (t[a,b]!='K')
                 {
                     t[a, b] = 'K';
@@ -70,7 +68,7 @@ namespace kiralyno
         static void Main(string[] args)
         {
             tabla asd = new tabla('#');
-            asd.elhelyez(4);
+            asd.elhelyez(64);
             asd.megjelenit();
             Console.ReadKey();
         }
