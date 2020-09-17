@@ -74,9 +74,21 @@ namespace kiralyno
                 return true;
             }
         }
-        public int uressor()
+        public bool uressor(int uressorok)
         {
-            return 0;
+            int i = 0;
+            while (i < 8 && t[uressorok, i] != 'K')
+            {
+                i++;
+            }
+            if (i < 8)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
     }
@@ -96,6 +108,16 @@ namespace kiralyno
             else
             {
                 Console.WriteLine("Nem üres oszlop");
+            }
+            Console.WriteLine("Kérem az sort: ");
+            int b = int.Parse(Console.ReadLine()) - 1;
+            if (asd.uressor(b))
+            {
+                Console.WriteLine("Üressor");
+            }
+            else
+            {
+                Console.WriteLine("Nem üres sor");
             }
             Console.ReadKey();
         }
