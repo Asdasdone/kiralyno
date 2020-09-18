@@ -99,7 +99,21 @@ namespace kiralyno
             tabla asd = new tabla('#');
             asd.elhelyez(8);
             asd.megjelenit();
-            Console.WriteLine("Kérem az oszlopot: ");
+            int oszlop = 0;
+            int sor = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                if (asd.uresoszlop(i))
+                {
+                    oszlop++;
+                }
+                if (asd.uressor(i))
+                {
+                    sor++;
+                }
+            }
+            Console.WriteLine("Üressor = {0} \nÜresoszlop = {1}",sor,oszlop);     
+            /*Console.WriteLine("Kérem az oszlopot: ");
             int a = int.Parse(Console.ReadLine())-1;
             if (asd.uresoszlop(a))
             {
@@ -118,7 +132,7 @@ namespace kiralyno
             else
             {
                 Console.WriteLine("Nem üres sor");
-            }
+            }*/
             Console.ReadKey();
         }
     }
