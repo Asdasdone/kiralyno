@@ -31,7 +31,7 @@ namespace kiralyno
         }
         public void elhelyez(int n)
         {
-            Random rnd = new Random();
+            Random rnd = new Random(Guid.NewGuid().GetHashCode());
             while (n!=0)
             {
                 int a = rnd.Next(0, 8);
