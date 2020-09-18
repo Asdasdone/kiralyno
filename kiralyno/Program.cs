@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace kiralyno
 {
@@ -35,16 +36,26 @@ namespace kiralyno
             {
                 int a = rnd.Next(0, 8);
                 int b = rnd.Next(0, 8);
-                if (t[a,b]!='K')
+                if (t[a,b]==urescella)
                 {
                     t[a, b] = 'K';
                     n--;
                 }
             }
         }
-        public void fajbair()
+        public void fajbair(StreamWriter fajl)
         {
 
+            for (int i = 0; i < 8; i++)
+            {
+                string sor = "";
+                for (int y = 0; y < 8; y++)
+                {
+                    sor += t[i, y];
+                }
+                fajl.WriteLine(sor);
+            }
+            fajl.WriteLine();
         }
         public void megjelenit()
         {
@@ -96,6 +107,8 @@ namespace kiralyno
     {
         static void Main(string[] args)
         {
+            tabla[] tablak = new tabla[64];
+            
             tabla asd = new tabla('#');
             asd.elhelyez(8);
             asd.megjelenit();
@@ -112,7 +125,7 @@ namespace kiralyno
                     sor++;
                 }
             }
-            Console.WriteLine("Üressor = {0} \nÜresoszlop = {1}",sor,oszlop);     
+            Console.WriteLine("Üressor = {0} \nÜresoszlop = {1}",sor,oszlop);
             /*Console.WriteLine("Kérem az oszlopot: ");
             int a = int.Parse(Console.ReadLine())-1;
             if (asd.uresoszlop(a))
@@ -133,6 +146,19 @@ namespace kiralyno
             {
                 Console.WriteLine("Nem üres sor");
             }*/
+            StreamWriter ki = new StreamWriter("asd.txt");
+            for (int i = 0; i < tablak.Length; i++)
+            {
+                tablak[i] = new tabla('*');
+                //tablak[i].elhelyez(i + 1);
+               // tablak[i].fajbair(ki);
+            }
+            for (int b = 0; b < 64; b++)
+            {
+                tablak[b].elhelyez(b + 1);
+                tablak[b].fajbair(ki);
+            }
+            ki.Close();
             Console.ReadKey();
         }
     }
